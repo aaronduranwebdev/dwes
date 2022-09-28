@@ -26,7 +26,4 @@ $baraja = generarBaraja();
 echo $generarTabla($baraja, "Baraja ordenada");
 shuffle($baraja);
 echo $generarTabla($baraja, "Baraja desordenada");
-
-
-
 ?>
