@@ -4,9 +4,9 @@ $doble = function ($valor) {
     return $valor * 2;
 };
 
-$variable = 21.3333333333333;
+$variable = 4;
 $triple = function () use ($variable) {
-    return $variable * 3;
+    return $variable * $variable * $variable ;
 };
 
 echo "Número original $numero<br>";

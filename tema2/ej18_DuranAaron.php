@@ -1,13 +1,26 @@
 <?php
-function limpiarTildes(string $cadena): string
+function revertirCadena(string $cadena): string
 {
-    return str_replace(array('á', 'é', 'í', 'ó', 'ú'), 
-        array('a', 'e', 'i', 'o', 'u'), $cadena);
+    $longitud = mb_strlen($cadena);
+
+    if ($longitud == 1)
+    {
+        return $cadena;
+    }
+    else
+    {
+        $longitud--;
+
+        return revertirCadena(mb_substr($cadena, 1, $longitud)) . mb_substr($cadena, 0, 1);
+    }
 }
 function esPalindromo(string $cadena): bool
 {
-    $resultado = strtolower(limpiarTildes(str_replace(' ', '', $cadena)));
-    if (strcmp(strrev($resultado), $resultado) == 0)
+    
+    $comparador = new Collator('es_ES');
+    $comparador->setStrength(Collator::PRIMARY);
+    $resultado = mb_strtolower(mb_ereg_replace(' ', '', $cadena));
+    if ($comparador->compare(revertirCadena($resultado), $resultado) === 0)
     {
         return true;
     }
