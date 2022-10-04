@@ -41,7 +41,6 @@ if (count($campo) > 0)
     echo '<tbody>';
     foreach ($campo as $fila)
     {
-        array_map('htmlentities', $fila);
         echo '<tr>';
         echo '<td>' . implode('</td><td>', $fila) . '</td>';
         echo '</tr>';
