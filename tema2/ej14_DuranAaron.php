@@ -2,7 +2,7 @@
 
 function revertirCadena(string $cadena): string
 {
-    $longitud = strlen($cadena);
+    $longitud = mb_strlen($cadena);
 
     if ($longitud == 1)
     {
@@ -12,10 +12,10 @@ function revertirCadena(string $cadena): string
     {
         $longitud--;
 
-        return revertirCadena(substr($cadena, 1, $longitud)) . substr($cadena, 0, 1);
+        return revertirCadena(mb_substr($cadena, 1, $longitud)) . mb_substr($cadena, 0, 1);
     }
 }
 
-print_r(revertirCadena("Me gusta el IES de Teis"));
+print_r(revertirCadena("Me gusta el IES de Téis"));
 
 ?>
