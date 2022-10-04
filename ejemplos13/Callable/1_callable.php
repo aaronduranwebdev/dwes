@@ -14,7 +14,7 @@ declare (strict_types=1);
  * nombres sean los distintos valores que puede tomar esa string
  */
 
-function calculador(callable $operacion, int $numa, int $numb): int {
+function calculador($operacion, int $numa, int $numb): int {
     $resul = $operacion($numa, $numb);
     return $resul;
 }
