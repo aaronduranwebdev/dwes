@@ -1,4 +1,10 @@
 <?php
+class examen {
+    function sumar(int $num, int $cantidad): int
+    {
+        return $num += $cantidad;
+    }
+}
 function revertirCadena(string $cadena): string
 {
     $longitud = mb_strlen($cadena);
@@ -14,10 +20,7 @@ function revertirCadena(string $cadena): string
     }
 }
 
-function sumar(int $num, int $cantidad): int
-{
-    return $num += $cantidad;
-}
+
 
 $arrayPrueba =
     array(1,
@@ -33,6 +36,7 @@ reset($arrayPrueba);
 function funcion1(array $arr_entrada): string
 {
     global $resultado;
+    
     $actual = current($arr_entrada);
     if (!$actual)
     {
@@ -44,12 +48,17 @@ function funcion1(array $arr_entrada): string
     }
     else if (is_numeric($actual))
     {
-        $actual = call_user_func('sumar', $actual, 10);
+        //$actual = call_user_func('sumar', $actual, 10);
+        $clase = new examen();
+        $funcion = 'sumar';
+        $actual = $clase->$funcion($actual, 10);
         $resultado = $resultado . $actual . ":";
     }
     else if (is_string($actual))
     {
-        $actual = call_user_func('revertirCadena', $actual);
+        //$actual = call_user_func('revertirCadena', $actual);
+        $funcion = 'revertirCadena';
+        $actual = $funcion($actual);
         $resultado = $resultado . $actual . ":";
 
     }
