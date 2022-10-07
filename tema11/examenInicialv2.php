@@ -20,8 +20,6 @@ function revertirCadena(string $cadena): string
     }
 }
 
-
-
 $arrayPrueba =
     array(1,
         array("buenos", 2,
