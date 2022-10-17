@@ -1,5 +1,6 @@
 <?php
-class examen {
+class examen
+{
     function sumar(int $num, int $cantidad): int
     {
         return $num += $cantidad;
@@ -34,8 +35,10 @@ reset($arrayPrueba);
 function funcion1(array $arr_entrada): string
 {
     global $resultado;
-    
+
     $actual = current($arr_entrada);
+
+
     if (!$actual)
     {
         return $resultado;
@@ -51,6 +54,7 @@ function funcion1(array $arr_entrada): string
         $funcion = 'sumar';
         $actual = $clase->$funcion($actual, 10);
         $resultado = $resultado . $actual . ":";
+
     }
     else if (is_string($actual))
     {
@@ -58,11 +62,10 @@ function funcion1(array $arr_entrada): string
         $funcion = 'revertirCadena';
         $actual = $funcion($actual);
         $resultado = $resultado . $actual . ":";
-
     }
     next($arr_entrada);
     funcion1($arr_entrada);
-    return $resultado;
+    return mb_substr($resultado, 0, -1);
 }
-echo funcion1($arrayPrueba);
+echo serialize(funcion1($arrayPrueba));
 ?>
