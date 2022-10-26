@@ -40,7 +40,12 @@ try {
     if ($ext === false) {
         throw new RuntimeException('Imagen non reconocida.');
     }
+    // Comprobamos si existe el directorio
+    if (!file_exists('./upload')) {
+        throw new RuntimeException('No existe el directorio');
+    }
 // Renombramos y movemos la imagen recibida a su localización definitiva
+    
     $res = move_uploaded_file($_FILES['imagen']['tmp_name'], './upload/foto.' . $ext);
     if (!$res) {
         throw new RuntimeException('La imagen no pudo ser cambiada de directorio.');
