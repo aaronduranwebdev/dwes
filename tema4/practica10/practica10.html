@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Envío de varios ficheros</title>
+    <meta charset="UTF-8">
+    <style>
+        #archivos {
+            margin-bottom: 15px;
+        }
+        #archivos input[type="file"] {
+            display: block;
+        }
+    </style>
+    <script>
+        var numImputs = 1;
+        function añadirInput() {
+            if (numImputs != 10) {
+                numImputs++;
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('name', 'fich[]');
+                input.setAttribute('class', 'cajaArchivo');
+                input.setAttribute('onchange', 'añadirInput()');
+                input.setAttribute('id', 'archivo' + numImputs);
+                document.getElementById('archivos').appendChild(input);
+                document.getElementsByName('numImputs')[0].value = numImputs;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>Ejemplo de envío múltiple de archivos (máx. 10)</p>
+    <form enctype="multipart/form-data" action="practica10_procesar.php" method="POST">
+        <!-- Enviar la cantidad de inputs para evitar mostrar el último al procesar -->
+        <input type="hidden" name="numImputs">
+        <div>
+            <label for="correo">Correo electrónico</label>
+            <input type="email" name="correo" id="correo">
+        </div>
+        <p>Ficheiros a enviar: </p>
+        <div id="archivos">
+            <input class="cajaArchivo" id="archivo1" name="fich[]" type="file" onchange="añadirInput()" />
+        </div>
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+
+</html>

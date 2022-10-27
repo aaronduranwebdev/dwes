@@ -27,7 +27,6 @@
 
     </form>
     <?php
-    
         if (isset($_POST['nombre']))
         {
             if (is_string($_POST['nombre'])) {
