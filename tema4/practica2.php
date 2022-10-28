@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="practica2.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div>
             <label for="nombre">Nombre:</label> <input type="text" name="nombre" id="nombre">
             <label for="direccion">Dirección:</label> <input type="text" name="direccion" id="direccion">
@@ -34,8 +34,6 @@
             } else{
                 echo "Introduce un valor válido (string)";
             }
-        } else {
-            echo "no hay dato";
         }
 
     ?>

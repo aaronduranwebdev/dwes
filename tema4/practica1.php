@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="practica1.php" method="post">
+    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) method="post">
         <input type="text" name="notaNum" id="notaNum">
         <input type="submit" value="Ver en texto">
     </form>

@@ -45,7 +45,7 @@
             // Se mueve el archivo a la carpeta cvs
             //$resultado = move_uploaded_file($archivos['tmp_name'][$indice], './cvs/' . $idUnico . '.' . $ext);
             $resultado = move_uploaded_file($archivos['tmp_name'][$indice], './cvs/' . $nombreArchivo);
-            echo "Se ha subido el archivo $nombreArchivo correctamente";
+            echo "Se ha subido el archivo $nombreArchivo correctamente<br>";
         }   
     } catch (RuntimeException $e) {
         echo $e->getMessage();
