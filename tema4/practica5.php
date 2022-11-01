@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <?php
+    if (!isset($_POST['matricula']))
+    {
+    ?>
     <form action="practica5.php" method="post">
         <div>
             <label for="daw">Despliegue de aplicaciones web</label>
@@ -39,8 +43,7 @@
         <input type="submit" value="Matricular">
     </form>
     <?php
-    if (isset($_POST['matricula']))
-    {
+    } else {
         $asignaturas = $_POST['matricula'];
         echo "Se han seleccionado las siguientes matrículas: <br>";
         foreach ($asignaturas as $asignatura)

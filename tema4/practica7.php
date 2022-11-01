@@ -9,13 +9,16 @@
 </head>
 
 <body>
+    <?php
+ if (!isset($_POST['fechaNac']) || (isset($_POST['fechaNac']) && empty($_POST['fechaNac']))) {
+    ?>
     <form action="practica7.php" method="post">
         <input type="date" name="fechaNac" id="fechaNac">
         <input type="submit" value="Calcular edad">
     </form>
     <?php
-    if (isset($_POST['fechaNac']))
-    {
+   
+ } else {
         $fecha = explode('-', $_POST['fechaNac']);
         if (checkdate($fecha[1], $fecha[2], $fecha[0]))
         {

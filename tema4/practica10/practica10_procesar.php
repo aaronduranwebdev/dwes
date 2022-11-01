@@ -28,7 +28,7 @@
             }
             // Comprobamos el tipo MIME del archivo
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $extensiones = array('pdf' => 'application/pdf', 'jpg' => 'image/jpeg');
+            $extensiones = array('pdf' => 'application/pdf', 'jpg' => 'image/jpeg', 'png' => 'image/png');
             $ext = array_search(finfo_file($finfo, $archivos['tmp_name'][$indice]), $extensiones);
             // Importante cerrar el recurso
             finfo_close($finfo);

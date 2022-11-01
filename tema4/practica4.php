@@ -9,15 +9,17 @@
 </head>
 
 <body>
+    <?php
+    if (!isset($_POST['notas'])) {
+    ?>
     <form action="practica4.php" method="post">
         <input type="text" name="notas" id="notas">
         <input type="submit" value="Calcular">
     </form>
     <?php
-    if (isset($_POST['notas']))
-    {
+    
+    } else {
         $numeros = explode(' ', $_POST['notas']);
-
         $suma = 0;
         $suspensos = 0;
         $sobresalientes = 0;
