@@ -1,7 +1,6 @@
 <?php
 // Función que comprueba si un número es primo
-function esPrimo($numero)
-{
+function esPrimo($numero) {
     $primo = true;
     for ($i = 2; $i < $numero; $i++)
     {
@@ -12,6 +11,8 @@ function esPrimo($numero)
     }
     return $primo;
 }
+// Comprobamos que el método de envío sea POST. Si no es así, muestra el formulario.
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,31 +27,29 @@ function esPrimo($numero)
 </head>
 
 <body>
-    <?php
-    if (!isset($_POST['numeros']) || (isset($_POST['numeros']) && empty($_POST['numeros'])))
-    {
-    ?>
-    <form action="practica6.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div>
             <label for="numeros">Números a comprobar (separados por comas)</label>
             <input type="text" name="numeros" id="numeros" value="">
         </div>
         <input type="submit" value="Comprobar">
     </form>
-    <?php
-    }
-    else
-    {
-        $numeros = explode(',', $_POST['numeros']);
-        foreach ($numeros as $numero)
-        {
-            if (intval($numero) != 0 && esPrimo(intval($numero)))
-            {
+<?php
+} else {
+    // Comprobamos si el parámetro 'numeros' no está vacío.
+    if (!empty($_POST['numeros'])) {
+        $numeros = explode(',', htmlspecialchars($_POST['numeros']));
+        foreach ($numeros as $numero) {
+            if (is_numeric($numero) && esPrimo(intval($numero))) {
                 echo $numero . " es primo <br>";
             }
         }
+    } else {
+        // Mostramos un error si lo está.
+        echo "No se han introducido datos";
     }
-    ?>
+}
+?>
 </body>
 
 </html>
