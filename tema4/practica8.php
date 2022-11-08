@@ -13,8 +13,11 @@ $ciudadPais = [
 ];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ciudad = $_POST['ciudad'];
-    $pais = $ciudadPais[$ciudad];
-    echo "La ciudad de $ciudad está en $pais";
+    if (array_key_exists($ciudad, $ciudadPais)) {
+        echo "La ciudad de $ciudad está en $ciudadPais[$ciudad]";
+    } else {
+        echo "La ciudad de $ciudad no está en la lista de países";
+    }
 } else {
 ?>
 <!DOCTYPE html>

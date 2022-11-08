@@ -1,3 +1,6 @@
+<?php
+    if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST['matricula']) || empty($_POST['matricula'])) {
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,11 +14,7 @@
 </head>
 
 <body>
-    <?php
-    if (!isset($_POST['matricula']))
-    {
-    ?>
-    <form action="practica5.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
         <div>
             <label for="daw">Despliegue de aplicaciones web</label>
             <input type="checkbox" name="matricula[]" id="daw" value="daw">
@@ -42,7 +41,10 @@
         </div>
         <input type="submit" value="Matricular">
     </form>
-    <?php
+    
+</body>
+</html>
+<?php
     } else {
         $asignaturas = $_POST['matricula'];
         echo "Se han seleccionado las siguientes matrículas: <br>";
@@ -74,7 +76,4 @@
             }
         }
     }
-    ?>
-</body>
-
-</html>
+?>
