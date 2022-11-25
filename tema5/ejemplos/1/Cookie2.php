@@ -34,7 +34,7 @@
 
 $r1 = setcookie('usuario', 'Patricia', time() + 5000);
 $r2 = setcookie('email', 'patricia@cursoPHP.es', time() + 5000, '/');
-$r3 = setcookie('rol', 'admin', time() + 5000, '/Cookies_y_Sesiones/directorio_rol');
+$r3 = setcookie('rol', 'admin', time() + 5000, '/1/directorio_rol');
 ?>
 
 <!DOCTYPE html>

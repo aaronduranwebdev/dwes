@@ -11,5 +11,6 @@ if (isset($_COOKIE['lista'])) {
         echo "$nombre : $valor <br />";
     }
 }
+
 ?>
 

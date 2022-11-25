@@ -1,35 +1,34 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $tipo = $_POST['tipoAlta'];
-    if ($tipo === 'altaProducto'){
-        header('Location:producto.php');
-    } else if ($tipo === 'altaServicio') {
-        header('Location:servicio.php');
-    } else {
-        echo "No es un valor válido";
+
+    if(!empty($_POST)){
+        
+        // Redirect user to another page
+        $sitemap = array("product" => "product.php", "service" => "service.php");
+        $choice = $_POST["site_choice"];
+        header("Location: $sitemap[$choice]");
     }
-} else {
-?>
-<!DOCTYPE html>
-<html lang="es">
+    else {
+        ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta producto/servicio</title>
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <title>Choice</title>
+    </head>
+    <body>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+        <label for="product">Product</label>
+        <input type="radio" name="site_choice" id="product" value="product">
+        <label for="service">Service</label>
+        <input type="radio" name="site_choice" id="service" value="service">
+        <input type="submit" value="Submit">
+        </form>
+    </body>
+    </html>
 
-<body>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <p>¿Qué tipo de alta deseas realizar?</p>
-        <label for="altaProducto">Producto</label><input type="radio" name="tipoAlta" id="altaProducto" value="altaProducto">
-        <label for="altaServicio">Servicio</label><input type="radio" name="tipoAlta" id="altaServicio" value="altaServicio">
-        <input type="submit" value="Continuar">
-    </form>
-</body>
-
-</html>
-<?php
-}
-?>
+        <?php
+    }
