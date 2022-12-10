@@ -1,0 +1,40 @@
+@font-face {
+    font-family: News;
+    src: url(../fonts/Old\ Newspaper\ Font.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+    font-family: News;
+    font-size: 34px;
+}
+
+ul{
+    list-style: none;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+li.key {
+    font-size: 3rem;
+    color: red;
+}
+
+li.value {
+    font-size: 2rem;
+}
