@@ -15,6 +15,7 @@ session_start();
             margin: 0;
             padding: 0;
         }
+
         #contenedor {
             width: 100%;
             height: 100vh;
