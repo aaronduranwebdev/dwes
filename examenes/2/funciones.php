@@ -1,7 +1,7 @@
 <?php
 class Funciones
 {
-    static private $directorioSubidas = 'archivos' . DIRECTORY_SEPARATOR;
+    private static $directorioSubidas = 'archivos' . DIRECTORY_SEPARATOR;
 
     static function camposObligatorios(array $campos, array $array): mixed
     {
@@ -52,7 +52,7 @@ class Funciones
      * @param mixed Archivo a comprobar
      * @return bool Sin errores sí/no
      */
-    private static function comprobar_errores_subida($archivo)
+    private static function comprobarErroresSubida($archivo)
     {
         if (!isset($archivo['error'])) {
             $error = true;
@@ -90,10 +90,10 @@ class Funciones
         }
         if (!$error) {
             if (!is_dir(self::$directorioSubidas . $carpetaDestino)) {
-                mkdir(self::$directorioSubidas . $carpetaDestino, 0777, true);
+                mkdir(self::$directorioSubidas . $carpetaDestino, 0775, true);
             }
             foreach ($archivos as $archivo) {
-                $error = self::comprobar_errores_subida($archivo);
+                $error = self::comprobarErroresSubida($archivo);
                 if (!$error) {
                     $error = move_uploaded_file($archivo['tmp_name'], self::$directorioSubidas . $carpetaDestino . DIRECTORY_SEPARATOR . $archivo['name']);
                 }
