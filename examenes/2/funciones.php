@@ -20,12 +20,8 @@ class Funciones
     }
     static function validarFechaNac(string $fecha): bool
     {
-        if (!empty($fecha)) {
-            $tmp = explode("-", $fecha);
-            return checkdate($tmp[1], $tmp[2], $tmp[0]);
-        } else {
-            return false;
-        }
+        $tmp = explode("-", $fecha);
+        return checkdate($tmp[1], $tmp[2], $tmp[0]);
     }
 
     static function sanearCorreo(string $correo): mixed
